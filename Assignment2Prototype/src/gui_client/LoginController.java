@@ -21,6 +21,7 @@ public class LoginController {
 	ChatClient client;
 	
 	//save changes by tali
+	//taaliiiii
 	
 	public void start(Stage primaryStage) throws Exception {	
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
