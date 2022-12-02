@@ -1,1 +1,5 @@
+/client/
+/common/
 /gui_client/
+/gui_server/
+/server/
