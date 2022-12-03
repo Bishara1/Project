@@ -19,5 +19,3 @@ public class ClientUI extends Application {
 		loginFrame.start(primaryStage);
 	}
 }
-
-//test11111
