@@ -11,29 +11,19 @@ public class Subscriber implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String Fname, LName, id, PhoneNum, Email, Visa, SubNUm;
 
 
-	public Subscriber(String fname, String lName, String id, String phoneNum, String email, String visa,
-			String subNUm) {
+	public Subscriber(String fname, String lName, String Id, String phoneNum, String email, String visa, String subNUm) {
 		super();
 		Fname = fname;
 		LName = lName;
-		this.id = id;
+		id = Id;
 		PhoneNum = phoneNum;
 		Email = email;
 		Visa = visa;
 		SubNUm = subNUm;
 	}
-	private String Fname;
-	private String LName;
-	private String id;
-	private String PhoneNum;
-	private String Email;
-	private String Visa;
-	private String SubNUm;
-
-
-
 
 	public String getId() {
 		return id;
@@ -90,8 +80,4 @@ public class Subscriber implements Serializable{
 	public void setSubNUm(String subNUm) {
 		SubNUm = subNUm;
 	}
-	
-   
-
-	
 }
