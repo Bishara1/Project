@@ -68,9 +68,12 @@ public class ChatClient extends AbstractClient
 	  awaitResponse = false;
 	  
 	  ArrayList<Subscriber> message = (ArrayList<Subscriber>)msg;
-	  
-	  if (message.get(0).getFname().equals("Database"))
+	  System.out.println(message.get(1).getFname());
+	  if (message.get(0).getFname().equals("Database")) {
+		  System.out.println("I am here");
+		  message.remove(0);
 		  subscribers = message;
+	  }
 		  
   }
 
