@@ -105,7 +105,7 @@ public class EchoServer extends AbstractServer
    * @param args[0] The port number to listen on.  Defaults to 5555 
    *          if no argument is entered.
    */
-  public static void main(String[] args) 
+  public static void runServer(String[] args) 
   {
     int port = 0; //Port to listen on
 

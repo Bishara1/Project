@@ -11,19 +11,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="787.0" style="-fx-background-color: #e2effd;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_server.ServerInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="787.0" style="-fx-background-color: #e2effd;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_server.ServerInfoController">
    <children>
       <Label layoutX="59.0" layoutY="93.0" text="Server Configuration" textFill="#4246a1">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="56.0" layoutY="189.0" text="IP:" textFill="#4246a1">
+      <Label layoutX="57.0" layoutY="220.0" text="IP:" textFill="#4246a1">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font></Label>
-      <TextField fx:id="serverIptxt" layoutX="112.0" layoutY="184.0" prefHeight="31.0" prefWidth="175.0" />
-      <TableView fx:id="table" editable="true" layoutX="338.0" layoutY="142.0" prefHeight="313.0" prefWidth="420.0">
+      <TextField fx:id="serverIptxt" layoutX="113.0" layoutY="215.0" prefHeight="31.0" prefWidth="175.0" />
+      <Button layoutX="60.0" layoutY="349.0" mnemonicParsing="false" onAction="#RunServer" prefHeight="36.0" prefWidth="225.0" style="-fx-background-color: #5d74a2;" text="Start Server" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font></Button>
+      <TableView editable="true" layoutX="338.0" layoutY="142.0" prefHeight="313.0" prefWidth="420.0">
         <columns>
           <TableColumn prefWidth="140.0" text="IP" />
           <TableColumn prefWidth="140.0" text="HOST" />
@@ -38,11 +42,14 @@
             <Blend />
          </effect>
       </Label>
+      <Button layoutX="737.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #e2effd;" text="X" textFill="#4246a1">
+         <font>
+            <Font size="22.0" />
+         </font></Button>
       <Label layoutX="452.0" layoutY="93.0" text="Connected Clients" textFill="#4246a1">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Label>
-      <Button fx:id="refresh" layoutX="257.0" layoutY="431.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

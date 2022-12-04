@@ -37,4 +37,9 @@ public class ServerInfoController {
 		
 	}
 	
+	public void RunServer() {
+		String[] args = {"5555"};
+		EchoServer.runServer(args);
+	}
+	
 }
