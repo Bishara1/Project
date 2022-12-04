@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import server.EchoServer;
 import client.ChatClient;
 import client.ClientUI;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +25,7 @@ import logic.Subscriber;
 
 public class SubscribersViewerController {
 	ChatClient client;
+	ObservableList<String> obs;
 	
 	@FXML
 	private TableView<Subscriber> tableSub;
@@ -70,6 +73,7 @@ public class SubscribersViewerController {
 	}
 	
 	public void ImportDataBtn() {
+		obs = FXCollections.observableArrayList();
 		ClientUI.chat.accept("Read");
 	}
 	

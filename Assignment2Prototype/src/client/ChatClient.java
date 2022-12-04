@@ -59,8 +59,8 @@ public class ChatClient extends AbstractClient
    */
   public void handleMessageFromServer(Object msg) 
   {
-	  System.out.println(msg.toString());
 	  awaitResponse = false;
+	  System.out.println(msg.toString());
       clientUI.display("hello");
   }
 

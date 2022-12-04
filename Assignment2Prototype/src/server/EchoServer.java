@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import logic.Subscriber;
 import ocsf.server.*;
 
 /**
@@ -64,16 +65,14 @@ public class EchoServer extends AbstractServer
 		System.out.println("Message received: " + msg + " from " + client);
 		try {
 			ParseClientData(data, client);
-			client.sendToClient(data); // added
+			//client.sendToClient(data); // added maybe uncomment?
 		} 
 		//catch (SQLException e) {e.printStackTrace();} 
 		catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//this.sendToAllClients(msg);
-	   
+			   
   }
 
     
@@ -186,20 +185,25 @@ public class EchoServer extends AbstractServer
 	}
   
   
-  // CHANGE*****************************
-  public ArrayList<String> ReadFromDB(String id) throws SQLException {
+  public ArrayList<Subscriber> ReadFromDB() throws SQLException {
 		Statement stmt;
-		ArrayList<String> alldatabase = new ArrayList<>();
+		Subscriber tempSub = new Subscriber(null, null, null, null, null, null, null);
+		ArrayList<Subscriber> alldatabase = new ArrayList<>();
 		try 
 		{
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM subscriber");
 	 		while(rs.next())
 	 		{
-				 // Print out the values
-	 			for (int i = 1; i < 8; i++) {
-	 				alldatabase.add(rs.getString(i));  // added
-	 			}
+	 			tempSub.setFname(rs.getString(1));
+	 			tempSub.setFname(rs.getString(2));
+	 			tempSub.setFname(rs.getString(3));
+	 			tempSub.setFname(rs.getString(4));
+	 			tempSub.setFname(rs.getString(5));
+	 			tempSub.setFname(rs.getString(6));
+	 			tempSub.setFname(rs.getString(7));
+	 			alldatabase.add(tempSub);
+	 			tempSub = new Subscriber(null, null, null, null, null, null, null);
 			}
 	 		
 			rs.close();
@@ -211,7 +215,7 @@ public class EchoServer extends AbstractServer
   
   public void ParseClientData(String data, ConnectionToClient client) throws IOException {
 	  String[] parsedData = data.split(" ");
-	  ArrayList<String> temp = new ArrayList<String>();
+	  ArrayList<Subscriber> db = new ArrayList<>();
 	  //enum check possibility
 	  try {
 		  if (parsedData[0].equals("Update"))
@@ -219,8 +223,8 @@ public class EchoServer extends AbstractServer
 		  
 		  else if (parsedData[0].equals("Read"))
 		  {
-			  temp = ReadFromDB(parsedData[1]);
-			  client.sendToClient(temp);
+			  db = ReadFromDB();
+			  client.sendToClient(db);
 		  }
 	  } catch(SQLException e) {e.printStackTrace();}
   }
