@@ -27,14 +27,13 @@
       </Button>
       <TableView layoutX="63.0" layoutY="163.0" prefHeight="487.0" prefWidth="1140.0">
         <columns>
-          <TableColumn prefWidth="51.0" text="#" />
-          <TableColumn prefWidth="94.0" text="First Name" />
+          <TableColumn prefWidth="114.99996948242188" text="First Name" />
             <TableColumn prefWidth="130.0" text="Last Name" />
-            <TableColumn prefWidth="113.0" text="ID" />
-            <TableColumn prefWidth="144.0" text="Phone Number" />
-            <TableColumn prefWidth="212.0" text="Email" />
-            <TableColumn prefWidth="230.0" text="Credit Card Number" />
-            <TableColumn prefWidth="165.0" text="Subscriber Number" />
+            <TableColumn prefWidth="105.0" text="ID" />
+            <TableColumn prefWidth="161.0" text="Phone Number" />
+            <TableColumn prefWidth="217.0" text="Email" />
+            <TableColumn prefWidth="219.0" text="Credit Card Number" />
+            <TableColumn prefWidth="192.0" text="Subscriber Number" />
         </columns>
       </TableView>
       <Label layoutX="72.0" layoutY="715.0" text="Subscriber ID:" textFill="#4246a1">
@@ -43,7 +42,7 @@
          </font>
       </Label>
       <TextField fx:id="SubscriberIDtxt" layoutX="209.0" layoutY="716.0" />
-      <Button defaultButton="true" layoutX="570.0" layoutY="742.0" mnemonicParsing="false" onAction="#ImportDataBtn" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #5961a6;" text="Import Data" textFill="WHITE">
+      <Button defaultButton="true" layoutX="548.0" layoutY="742.0" mnemonicParsing="false" onAction="#ImportDataBtn" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #5961a6;" text="Import Data" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

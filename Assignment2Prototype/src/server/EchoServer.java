@@ -216,6 +216,7 @@ public class EchoServer extends AbstractServer
   public void ParseClientData(String data, ConnectionToClient client) throws IOException {
 	  String[] parsedData = data.split(" ");
 	  ArrayList<Subscriber> db = new ArrayList<>();
+	  db.add(new Subscriber("Database", null, null, null, null, null, null));
 	  //enum check possibility
 	  try {
 		  if (parsedData[0].equals("Update"))

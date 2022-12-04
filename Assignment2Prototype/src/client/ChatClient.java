@@ -6,7 +6,11 @@ package client;
 
 import ocsf.client.*;
 import common.*;
+import gui_client.SubscribersViewerController;
+import logic.Subscriber;
+
 import java.io.*;
+import java.util.ArrayList;
 
 
 //Boom badapam mr.WorldWide
@@ -29,6 +33,7 @@ public class ChatClient extends AbstractClient
    */
   ChatIF clientUI; 
   public static boolean awaitResponse = false;
+  public static ArrayList<Subscriber> subscribers;
 
   
   //Constructors ****************************************************
@@ -57,11 +62,16 @@ public class ChatClient extends AbstractClient
    *
    * @param msg The message from the server.
    */
+  @SuppressWarnings("unchecked")
   public void handleMessageFromServer(Object msg) 
   {
 	  awaitResponse = false;
-	  System.out.println(msg.toString());
-      clientUI.display("hello");
+	  
+	  ArrayList<Subscriber> message = (ArrayList<Subscriber>)msg;
+	  
+	  if (message.get(0).getFname().equals("Database"))
+		  subscribers = message;
+		  
   }
 
   /**

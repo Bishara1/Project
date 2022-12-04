@@ -25,7 +25,8 @@ import logic.Subscriber;
 
 public class SubscribersViewerController {
 	ChatClient client;
-	ObservableList<String> obs;
+	private ObservableList<String> obs = FXCollections.observableArrayList();
+	
 	
 	@FXML
 	private TableView<Subscriber> tableSub;
@@ -55,13 +56,13 @@ public class SubscribersViewerController {
 	@FXML
 	private TextField UserIdtxt;
 	
-	public void start(Stage primaryStage) throws Exception {
-		
-		String UserID = UserIdtxt.getText();  // 
+	public void start(Stage primaryStage) throws Exception { 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
 		Parent root = loader.load();	
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  //css
+		obs = ChatClient.subscribers;
+		LoadTable();
 		primaryStage.setTitle("Client");
 		primaryStage.setScene(scene);
 		
@@ -73,7 +74,6 @@ public class SubscribersViewerController {
 	}
 	
 	public void ImportDataBtn() {
-		obs = FXCollections.observableArrayList();
 		ClientUI.chat.accept("Read");
 	}
 	
@@ -82,4 +82,7 @@ public class SubscribersViewerController {
 		System.exit(0);	
 	}
 	
+	public void LoadTable() {
+		
+	}
 }
