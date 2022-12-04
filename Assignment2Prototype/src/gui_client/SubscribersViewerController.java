@@ -25,7 +25,7 @@ import logic.Subscriber;
 
 public class SubscribersViewerController {
 	ChatClient client;
-	private ObservableList<String> obs = FXCollections.observableArrayList();
+	private ObservableList<Subscriber> obs;
 	
 	
 	@FXML
@@ -61,7 +61,7 @@ public class SubscribersViewerController {
 		Parent root = loader.load();	
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  //css
-		obs = ChatClient.subscribers;
+		obs = FXCollections.observableArrayList(ChatClient.subscribers);
 		LoadTable();
 		primaryStage.setTitle("Client");
 		primaryStage.setScene(scene);
@@ -83,6 +83,6 @@ public class SubscribersViewerController {
 	}
 	
 	public void LoadTable() {
-		
+		tableSub.setItems(obs);
 	}
 }
