@@ -64,7 +64,7 @@ public class EchoServer extends AbstractServer
 		System.out.println("Message received: " + msg + " from " + client);
 		try {
 			ParseClientData(data, client);
-			client.sendToClient(data);// added
+			client.sendToClient(data); // added
 		} 
 		//catch (SQLException e) {e.printStackTrace();} 
 		catch (IOException e) {
@@ -193,7 +193,7 @@ public class EchoServer extends AbstractServer
 		try 
 		{
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM subscriber WHERE id = " + id + ";");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM subscriber");
 	 		while(rs.next())
 	 		{
 				 // Print out the values

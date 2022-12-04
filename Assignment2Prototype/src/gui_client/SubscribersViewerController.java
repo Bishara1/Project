@@ -3,9 +3,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import server.EchoServer;
 import client.ChatClient;
+import client.ClientUI;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,8 +23,7 @@ import logic.Subscriber;
 
 public class SubscribersViewerController {
 	ChatClient client;
-	PreparedStatement pst = null;
-	Connection conn = null;
+	
 	@FXML
 	private TableView<Subscriber> tableSub;
 	@FXML
@@ -41,19 +42,7 @@ public class SubscribersViewerController {
 	private TableColumn<Subscriber,String> subnumcol;
 	
 	@FXML
-	private TextField txtFname;
-	@FXML
-	private TextField txtLname;
-	@FXML
-	private TextField txtID;
-	@FXML
-	private TextField txtPhone;
-	@FXML
-	private TextField txtEmail;
-	@FXML
-	private TextField txtVisa;
-	@FXML
-	private TextField txtSubNum;
+	private TextField SubscriberIDtxt;
 	
 	@FXML
 	private Button btnclose=null;
@@ -64,6 +53,7 @@ public class SubscribersViewerController {
 	private TextField UserIdtxt;
 	
 	public void start(Stage primaryStage) throws Exception {
+		
 		String UserID = UserIdtxt.getText();  // 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
 		Parent root = loader.load();	
@@ -75,41 +65,12 @@ public class SubscribersViewerController {
 		primaryStage.show();	
 	}
 	
-	public void addSubscriber() {
-		try 
-	      {
-	          conn = DriverManager.getConnection("jdbc:mysql://localhost/subscriber?serverTimezone=IST","root","Tali@110994");
-	          System.out.println("SQL connection succeed");
-	   	  } catch (SQLException ex)  { /* handle any errors*/
-				System.out.println("SQLException: " + ex.getMessage());
-				System.out.println("SQLState: " + ex.getSQLState());
-				System.out.println("VendorError: " + ex.getErrorCode());
-	   	  }
-		String sql = "Insert into users";
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1,txtFname.getText());
-			pst.setString(2,txtLname.getText());
-			pst.setString(3,txtID.getText());
-			pst.setString(4,txtPhone.getText());
-			pst.setString(5,txtEmail.getText());
-			pst.setString(6,txtVisa.getText());
-			pst.setString(7,txtSubNum.getText());
-			pst.execute();
-			
-			System.out.println("User Added Succesffully");
-
-
-
-
-		}
-		catch(Exception e){
-			System.out.println("Add User Error");
-		}
-	}
-	
 	public void UpdatBtn() {
 		
+	}
+	
+	public void ImportDataBtn() {
+		ClientUI.chat.accept("Read");
 	}
 	
 	public void ExitBtn() {

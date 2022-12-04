@@ -1,7 +1,19 @@
 package logic;
 
-public class Subscriber {
+import java.io.Serializable;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+public class Subscriber implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	ObservableList<String> obs = FXCollections.observableArrayList();
+
+
 	public Subscriber(String fname, String lName, String id, String phoneNum, String email, String visa,
 			String subNUm) {
 		super();

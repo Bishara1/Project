@@ -28,6 +28,7 @@ public class ChatClient extends AbstractClient
    * the display method in the client.
    */
   ChatIF clientUI; 
+  public static boolean awaitResponse = false;
 
   
   //Constructors ****************************************************
@@ -58,7 +59,9 @@ public class ChatClient extends AbstractClient
    */
   public void handleMessageFromServer(Object msg) 
   {
-    clientUI.display(msg.toString());
+	  System.out.println(msg.toString());
+	  awaitResponse = false;
+      clientUI.display("hello");
   }
 
   /**
@@ -70,7 +73,17 @@ public class ChatClient extends AbstractClient
   {
     try
     {
+    	openConnection();//in order to send more than one message
+       	awaitResponse = true;
     	sendToServer(message);
+    	
+    	while (awaitResponse) {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
     }
     catch(IOException e)
     {
