@@ -1,9 +1,13 @@
 package gui_client;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import javax.naming.spi.InitialContextFactory;
 
 import server.EchoServer;
 import client.ChatClient;
@@ -12,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -26,8 +31,7 @@ import logic.Subscriber;
 public class SubscribersViewerController {
 	ChatClient client;
 	private ObservableList<Subscriber> obs;
-	
-	
+
 	@FXML
 	private TableView<Subscriber> tableSub;
 	@FXML
@@ -61,8 +65,6 @@ public class SubscribersViewerController {
 		Parent root = loader.load();	
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  //css
-		obs = FXCollections.observableArrayList(ChatClient.subscribers);
-		LoadTable();
 		primaryStage.setTitle("Client");
 		primaryStage.setScene(scene);
 		
@@ -75,6 +77,8 @@ public class SubscribersViewerController {
 	
 	public void ImportDataBtn() {
 		ClientUI.chat.accept("Read");
+		obs = FXCollections.observableArrayList(ChatClient.subscribers);
+		LoadTable();
 	}
 	
 	public void ExitBtn() {

@@ -195,13 +195,13 @@ public class EchoServer extends AbstractServer
 			ResultSet rs = stmt.executeQuery("SELECT * FROM subscriber");
 	 		while(rs.next())
 	 		{
-	 			tempSub.setFname(rs.getString(1));
-	 			tempSub.setFname(rs.getString(2));
-	 			tempSub.setFname(rs.getString(3));
-	 			tempSub.setFname(rs.getString(4));
-	 			tempSub.setFname(rs.getString(5));
+	 			tempSub.setFname(rs.getString(7)); 
 	 			tempSub.setFname(rs.getString(6));
-	 			tempSub.setFname(rs.getString(7));
+	 			tempSub.setFname(rs.getString(5));
+	 			tempSub.setFname(rs.getString(4));
+	 			tempSub.setFname(rs.getString(3));
+	 			tempSub.setFname(rs.getString(2));
+	 			tempSub.setFname(rs.getString(1));
 	 			alldatabase.add(tempSub);
 	 			tempSub = new Subscriber(null, null, null, null, null, null, null);
 			}
@@ -224,7 +224,7 @@ public class EchoServer extends AbstractServer
 		  
 		  else if (parsedData[0].equals("Read"))
 		  {
-			  db = ReadFromDB();
+			  db.addAll(ReadFromDB());
 			  client.sendToClient(db);
 		  }
 	  } catch(SQLException e) {e.printStackTrace();}
