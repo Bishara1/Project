@@ -1,5 +1,4 @@
 package client;
-
 import gui_client.LoginController;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -18,4 +17,5 @@ public class ClientUI extends Application {
 		LoginController loginFrame = new LoginController(); // create StudentFrame
 		loginFrame.start(primaryStage);
 	}
+	    
 }
