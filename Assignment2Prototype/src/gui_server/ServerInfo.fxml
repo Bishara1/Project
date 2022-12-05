@@ -18,20 +18,20 @@
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="57.0" layoutY="220.0" text="IP:" textFill="#4246a1">
+      <Label layoutX="59.0" layoutY="177.0" prefHeight="2.0" prefWidth="19.0" text="IP:" textFill="#4246a1">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font></Label>
-      <TextField fx:id="serverIptxt" layoutX="113.0" layoutY="215.0" prefHeight="31.0" prefWidth="175.0" />
-      <Button layoutX="60.0" layoutY="349.0" mnemonicParsing="false" onAction="#RunServer" prefHeight="36.0" prefWidth="225.0" style="-fx-background-color: #5d74a2;" text="Start Server" textFill="WHITE">
+      <TextField fx:id="serverIptxt" layoutX="125.0" layoutY="172.0" prefHeight="31.0" prefWidth="175.0" />
+      <Button layoutX="59.0" layoutY="291.0" mnemonicParsing="false" onAction="#RunServerBtn" prefHeight="36.0" prefWidth="225.0" style="-fx-background-color: #5d74a2;" text="Start Server" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font></Button>
-      <TableView editable="true" layoutX="338.0" layoutY="142.0" prefHeight="313.0" prefWidth="420.0">
+      <TableView fx:id="table" editable="true" layoutX="339.0" layoutY="142.0" prefHeight="313.0" prefWidth="420.0">
         <columns>
-          <TableColumn prefWidth="140.0" text="IP" />
-          <TableColumn prefWidth="140.0" text="HOST" />
-            <TableColumn prefWidth="140.0" text="STATUS" />
+          <TableColumn fx:id="colIp" prefWidth="140.0" text="IP" />
+          <TableColumn fx:id="colHost" prefWidth="140.0" text="HOST" />
+            <TableColumn fx:id="colStatus" prefWidth="140.0" text="STATUS" />
         </columns>
       </TableView>
       <Label graphicTextGap="7.0" layoutX="300.0" layoutY="19.0" prefHeight="53.0" prefWidth="188.0" text="Server Info" textFill="#4246a1">
@@ -42,14 +42,26 @@
             <Blend />
          </effect>
       </Label>
-      <Button layoutX="737.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #e2effd;" text="X" textFill="#4246a1">
-         <font>
-            <Font size="22.0" />
-         </font></Button>
       <Label layoutX="452.0" layoutY="93.0" text="Connected Clients" textFill="#4246a1">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Label>
+      <Button layoutX="59.0" layoutY="410.0" mnemonicParsing="false" onAction="#QuitBtn" prefHeight="36.0" prefWidth="225.0" style="-fx-background-color: #5d74a2;" text="Quit" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Label layoutX="59.0" layoutY="225.0" prefHeight="21.0" prefWidth="37.0" text="Port:" textFill="#4246a1">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="serverPortxt" layoutX="125.0" layoutY="220.0" prefHeight="31.0" prefWidth="175.0" />
+      <Button layoutX="59.0" layoutY="351.0" mnemonicParsing="false" onAction="#RefreshClientsBtn" prefHeight="36.0" prefWidth="225.0" style="-fx-background-color: #5d74a2;" text="Refresh Clients" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

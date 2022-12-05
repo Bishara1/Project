@@ -84,9 +84,12 @@ public class ChatClient extends AbstractClient
   {
     try
     {
+    	String msg = (String)message;
+    	if(msg.equals("login")) 
+    		msg += " " + this.getHost();
     	openConnection(); //in order to send more than one message
        	awaitResponse = true;
-    	sendToServer(message);
+    	sendToServer(msg);
     	
     	while (awaitResponse) {
 			try {

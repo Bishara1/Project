@@ -31,6 +31,7 @@ import logic.Subscriber;
 
 public class SubscribersViewerController implements Initializable{
 	ChatClient client;
+	
 	private ObservableList<Subscriber> obs;
 
 	@FXML
@@ -71,7 +72,8 @@ public class SubscribersViewerController implements Initializable{
 	// Initialize table contents with database 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ClientUI.chat.accept("Read");
+		ClientUI.chat.accept("login"); // send to server that a client is connected
+		ClientUI.chat.accept("Read");  // read from database
 		obs = FXCollections.observableArrayList(ChatClient.subscribers);
 		LoadTable();
 		tableSub.setItems(obs);

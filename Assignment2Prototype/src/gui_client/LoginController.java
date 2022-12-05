@@ -1,26 +1,21 @@
 package gui_client;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import client.ChatClient;
-
+import client.ClientController;
+import client.ClientUI;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class LoginController {
+	public static ClientController chat; //only one instance
 	ChatClient client;
-	
-	public void start(Stage primaryStage) throws Exception {	
+
+	public void start(Stage primaryStage) throws Exception {
+		
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
 				
 		Scene scene = new Scene(root);
@@ -46,6 +41,7 @@ public class LoginController {
 		//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
 		primaryStage.setTitle("Subscribers Viewer");
 		primaryStage.setScene(scene);
+		chat = new ClientController("localhost", 5555);  // new client connected
 		
 		primaryStage.show();	
 	}

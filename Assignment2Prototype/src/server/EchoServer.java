@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import logic.Connected;
 import logic.Subscriber;
 import ocsf.server.*;
 
@@ -29,6 +30,7 @@ import ocsf.server.*;
 public class EchoServer extends AbstractServer
 { 
 	Connection conn;
+	public static ArrayList<Connected> users = new ArrayList<Connected>();
   //Class variables *************************************************
   
   /**
@@ -159,8 +161,6 @@ public class EchoServer extends AbstractServer
 		
 		try 
 		{
-			
-			
 			for (int i = 1; i < 8; i++)
 				ps.setString(i, data.get(i-1));
 			
@@ -231,6 +231,16 @@ public class EchoServer extends AbstractServer
 			  db.addAll(ReadFromDB());
 			  client.sendToClient(db);
 		  }
+		  
+		  else if (parsedData[0].equals("login"))
+		  {
+			 System.out.println("Login"); 
+			 users.add(new Connected(client.getName() ,parsedData[1], "Connected"));
+			 ArrayList<Subscriber> temp = new ArrayList<Subscriber>();
+			 temp.add(new Subscriber("login", null, null, null, null, null, null));
+			 client.sendToClient(temp);
+		  }
+		  
 	  } catch(SQLException e) {e.printStackTrace();}
   }
   

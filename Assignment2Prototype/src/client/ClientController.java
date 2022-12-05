@@ -19,7 +19,7 @@ import common.*;
  * @author Dr Robert Lagani&egrave;re
  * @version July 2000
  */
-public class ClientCotroller implements ChatIF 
+public class ClientController implements ChatIF 
 {
   //Class variables *************************************************
   
@@ -44,7 +44,7 @@ public class ClientCotroller implements ChatIF
    * @param host The host to connect to.
    * @param port The port to connect on.
    */
-  public ClientCotroller(String host, int port) 
+  public ClientController(String host, int port) 
   {
     try 
     {
@@ -66,6 +66,7 @@ public class ClientCotroller implements ChatIF
    */
   public void accept(String data) {
       client.handleMessageFromClientUI(data);
+    
   }
 
   /**

@@ -1,4 +1,5 @@
 /gui_client/
-/client/
-/server/
+/gui_server/
 /logic/
+/server/
+/client/
