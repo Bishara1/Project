@@ -52,14 +52,10 @@ public class SubscribersViewerController implements Initializable{
 	
 	@FXML
 	private TextField SubscriberIDtxt;
-
 	@FXML
-	private Button btnclose=null;
+	private TextField SubscriberCreditNumtxt;
 	@FXML
-	private Button btnUpdate=null;
-		
-	@FXML
-	private TextField UserIdtxt;
+	private TextField SubscriberSubNumtxt;
 	
 	public void start(Stage primaryStage) throws Exception { 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
@@ -68,11 +64,11 @@ public class SubscribersViewerController implements Initializable{
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  //css
 		primaryStage.setTitle("Client");
 		primaryStage.setScene(scene);
-//		ImportDataBtn();
 		
 		primaryStage.show();	
 	}
 	
+	// Initialize table contents with database 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat.accept("Read");
@@ -82,14 +78,12 @@ public class SubscribersViewerController implements Initializable{
 	}
 	
 	public void UpdatBtn() {
-		
+		String command = "Update " + SubscriberIDtxt.getText() + " " + SubscriberCreditNumtxt.getText() + " " + SubscriberSubNumtxt.getText();
+		System.out.println("Updating");
+		ClientUI.chat.accept(command);
+		ClientUI.chat.display("Updated");
 	}
-	
-//	public void ImportDataBtn() {
-//		ClientUI.chat.accept("Read");
-//		obs = FXCollections.observableArrayList(ChatClient.subscribers);
-//		
-//	}
+
 	
 	public void ExitBtn() {
 		System.out.println("exiting login screen");
@@ -98,7 +92,7 @@ public class SubscribersViewerController implements Initializable{
 	
 	public void LoadTable() {
 		fnamecol.setCellValueFactory(new PropertyValueFactory<>("Fname"));
-		lnamecol.setCellValueFactory(new PropertyValueFactory<>("Lname"));
+		lnamecol.setCellValueFactory(new PropertyValueFactory<>("LName"));
 		idcol.setCellValueFactory(new PropertyValueFactory<>("Id"));
 		phonecol.setCellValueFactory(new PropertyValueFactory<>("PhoneNum"));
 		emailcol.setCellValueFactory(new PropertyValueFactory<>("Email"));

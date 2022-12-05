@@ -174,10 +174,9 @@ public class EchoServer extends AbstractServer
 				+ "Set credit_card_number = ?, subscriber_number = ? "
 				+ "Where id = ?");
 		
-		try 
-		{
-			ps.setString(2, details[3]);  // credit_card
-			ps.setString(1, details[2]);  // subscriber_number
+		try {
+			ps.setString(1, details[2]);  // credit_card
+			ps.setString(2, details[3]);  // subscriber_number
 			ps.setString(3, details[1]);  // id
 			
 			ps.executeUpdate();
