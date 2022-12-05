@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="924.0" prefWidth="1265.0" style="-fx-background-color: #e2effd;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.SubscribersViewerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="1265.0" style="-fx-background-color: #e2effd;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_client.SubscribersViewerController">
    <children>
       <Label layoutX="467.0" layoutY="36.0" prefHeight="54.0" prefWidth="332.0" text="Subscribers Viewer" textFill="#4246a1">
          <font>
@@ -26,15 +26,15 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView layoutX="63.0" layoutY="125.0" prefHeight="435.0" prefWidth="1140.0">
+      <TableView fx:id="tableSub" layoutX="63.0" layoutY="125.0" prefHeight="435.0" prefWidth="1140.0">
         <columns>
-          <TableColumn prefWidth="114.99996948242188" text="First Name" />
-            <TableColumn prefWidth="130.0" text="Last Name" />
-            <TableColumn prefWidth="105.0" text="ID" />
-            <TableColumn prefWidth="161.0" text="Phone Number" />
-            <TableColumn prefWidth="217.0" text="Email" />
-            <TableColumn prefWidth="219.0" text="Credit Card Number" />
-            <TableColumn prefWidth="192.0" text="Subscriber Number" />
+          <TableColumn fx:id="fnamecol" prefWidth="114.99996948242188" text="First Name" />
+            <TableColumn fx:id="lnamecol" prefWidth="130.0" text="Last Name" />
+            <TableColumn fx:id="idcol" prefWidth="105.0" text="ID" />
+            <TableColumn fx:id="phonecol" prefWidth="161.0" text="Phone Number" />
+            <TableColumn fx:id="emailcol" prefWidth="217.0" text="Email" />
+            <TableColumn fx:id="visacol" prefWidth="219.0" text="Credit Card Number" />
+            <TableColumn fx:id="subnumcol" prefWidth="192.0" text="Subscriber Number" />
         </columns>
       </TableView>
       <Label layoutX="63.0" layoutY="677.0" text="Subscriber ID:" textFill="#4246a1">
@@ -43,11 +43,6 @@
          </font>
       </Label>
       <TextField fx:id="SubscriberIDtxt" layoutX="296.0" layoutY="677.0" prefHeight="25.0" prefWidth="173.0" promptText="Subscriber ID" />
-      <Button defaultButton="true" layoutX="1077.0" layoutY="762.0" mnemonicParsing="false" onAction="#ImportDataBtn" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #5961a6;" text="Import Data" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
       <Label layoutX="63.0" layoutY="723.0" text="New credit card number" textFill="#4246a1">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -60,7 +55,7 @@
          </font>
       </Label>
       <TextField fx:id="SubscriberIDtxt2" layoutX="296.0" layoutY="768.0" prefHeight="25.0" prefWidth="173.0" promptText="New subscriber number" />
-      <Text fill="#4246a1" fontSmoothingType="LCD" layoutX="63.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To modify details of a certain subscriber:&#10;Enter the desired subscriber ID&#10;Enter their new credit card number&#10;Enter their new subscriber number" wrappingWidth="355.0000005662441">
+      <Text fill="#4246a1" fontSmoothingType="LCD" layoutX="63.0" layoutY="588.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To modify details of a certain subscriber:&#10;Enter the desired subscriber ID&#10;Enter their new credit card number&#10;Enter their new subscriber number" wrappingWidth="355.0000005662441">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

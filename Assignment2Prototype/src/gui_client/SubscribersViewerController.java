@@ -25,10 +25,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import logic.Subscriber;
 
-public class SubscribersViewerController {
+public class SubscribersViewerController implements Initializable{
 	ChatClient client;
 	private ObservableList<Subscriber> obs;
 
@@ -67,21 +68,28 @@ public class SubscribersViewerController {
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  //css
 		primaryStage.setTitle("Client");
 		primaryStage.setScene(scene);
-		ImportDataBtn();
-		LoadTable();
+//		ImportDataBtn();
 		
 		primaryStage.show();	
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		ClientUI.chat.accept("Read");
+		obs = FXCollections.observableArrayList(ChatClient.subscribers);
+		LoadTable();
+		tableSub.setItems(obs);
 	}
 	
 	public void UpdatBtn() {
 		
 	}
 	
-	public void ImportDataBtn() {
-		ClientUI.chat.accept("Read");
-		System.out.println("I am here");
-		obs = FXCollections.observableArrayList(ChatClient.subscribers);
-	}
+//	public void ImportDataBtn() {
+//		ClientUI.chat.accept("Read");
+//		obs = FXCollections.observableArrayList(ChatClient.subscribers);
+//		
+//	}
 	
 	public void ExitBtn() {
 		System.out.println("exiting login screen");
@@ -89,8 +97,12 @@ public class SubscribersViewerController {
 	}
 	
 	public void LoadTable() {
-        //sfnamecol.setCellValueFactory(c -> c.getValue().getFname().toString());
-        
-        //tableSub.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
+		fnamecol.setCellValueFactory(new PropertyValueFactory<>("Fname"));
+		lnamecol.setCellValueFactory(new PropertyValueFactory<>("Lname"));
+		idcol.setCellValueFactory(new PropertyValueFactory<>("Id"));
+		phonecol.setCellValueFactory(new PropertyValueFactory<>("PhoneNum"));
+		emailcol.setCellValueFactory(new PropertyValueFactory<>("Email"));
+		visacol.setCellValueFactory(new PropertyValueFactory<>("Visa"));
+		subnumcol.setCellValueFactory(new PropertyValueFactory<>("SubNum"));
 	}
 }

@@ -83,6 +83,6 @@ public class Subscriber implements Serializable{
 	
 	@Override
 	public String toString() {
-		return this.Fname + " " + this.LName + " " + this.id + " " + this.Email + " " + this.PhoneNum + " " + this.Visa + " " +this.SubNum;
+		return this.Fname + " " + this.LName + " " + this.id + " " + this.Email + " " + this.PhoneNum + " " + this.Visa + " " + this.SubNum;
 	}
 }
