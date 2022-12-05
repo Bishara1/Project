@@ -68,12 +68,11 @@ public class ChatClient extends AbstractClient
 	  awaitResponse = false;
 	  
 	  ArrayList<Subscriber> message = (ArrayList<Subscriber>)msg;
-	  System.out.println(message.get(1).getFname());
+
 	  if (message.get(0).getFname().equals("Database")) {
 		  message.remove(0);
 		  subscribers = message;
-	  }
-		  
+	  } 
   }
 
   /**
@@ -85,7 +84,7 @@ public class ChatClient extends AbstractClient
   {
     try
     {
-    	openConnection();//in order to send more than one message
+    	openConnection(); //in order to send more than one message
        	awaitResponse = true;
     	sendToServer(message);
     	
@@ -113,7 +112,7 @@ public class ChatClient extends AbstractClient
   {
     try
     {
-      closeConnection();
+    	closeConnection();
     }
     catch(IOException e) {}
     System.exit(0);

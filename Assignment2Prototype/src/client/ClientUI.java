@@ -16,6 +16,5 @@ public class ClientUI extends Application {
 						  		
 		LoginController loginFrame = new LoginController(); // create StudentFrame
 		loginFrame.start(primaryStage);
-	}
-	    
+	}   
 }

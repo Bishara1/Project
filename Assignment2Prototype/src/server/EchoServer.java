@@ -195,13 +195,13 @@ public class EchoServer extends AbstractServer
 			ResultSet rs = stmt.executeQuery("SELECT * FROM subscriber");
 	 		while(rs.next())
 	 		{
-	 			tempSub.setFname(rs.getString(7)); 
-	 			tempSub.setFname(rs.getString(6));
-	 			tempSub.setFname(rs.getString(5));
-	 			tempSub.setFname(rs.getString(4));
-	 			tempSub.setFname(rs.getString(3));
-	 			tempSub.setFname(rs.getString(2));
 	 			tempSub.setFname(rs.getString(1));
+	 			tempSub.setLName(rs.getString(2));
+	 			tempSub.setId(rs.getString(3));
+	 			tempSub.setPhoneNum(rs.getString(4));
+	 			tempSub.setEmail(rs.getString(5));
+	 			tempSub.setVisa(rs.getString(6));
+	 			tempSub.setSubNum(rs.getString(7));
 	 			alldatabase.add(tempSub);
 	 			tempSub = new Subscriber(null, null, null, null, null, null, null);
 			}

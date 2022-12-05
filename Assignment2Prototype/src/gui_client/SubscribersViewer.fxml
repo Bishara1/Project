@@ -60,7 +60,7 @@
          </font>
       </Label>
       <TextField fx:id="SubscriberIDtxt2" layoutX="296.0" layoutY="768.0" prefHeight="25.0" prefWidth="173.0" promptText="New subscriber number" />
-      <Text fill="#4246a1" fontSmoothingType="LCD" layoutX="90.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To modify details of a certain subscriber:&#10;Enter the desired subscriber ID&#10;Enter their new credit card number&#10;Enter their new subscriber number" textAlignment="CENTER" wrappingWidth="355.0000005662441">
+      <Text fill="#4246a1" fontSmoothingType="LCD" layoutX="63.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To modify details of a certain subscriber:&#10;Enter the desired subscriber ID&#10;Enter their new credit card number&#10;Enter their new subscriber number" wrappingWidth="355.0000005662441">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

@@ -48,12 +48,12 @@ public class ClientCotroller implements ChatIF
   {
     try 
     {
-      client = new ChatClient(host, port, this);
+    	client = new ChatClient(host, port, this);
     } 
     catch(IOException exception) 
     {
-      System.out.println("Error: Can't setup connection! Terminating client.");
-      System.exit(1);
+    	System.out.println("Error: Can't setup connection! Terminating client.");
+    	System.exit(1);
     }
   }
 
@@ -76,33 +76,7 @@ public class ClientCotroller implements ChatIF
    */
   public void display(String message) 
   {
-    System.out.println("> " + message);
+	  System.out.println("> " + message);
   }
 }
-
-  
-//  //Class methods ***************************************************
-//  
-//  /**
-//   * This method is responsible for the creation of the Client UI.
-//   *
-//   * @param args[0] The host to connect to.
-//   */
-//  public static void main(String[] args) 
-//  {
-//    String host = "";
-//    int port = 5555;  //The port number
-//
-//    try
-//    {
-//      host = args[0];
-//    }
-//    catch(ArrayIndexOutOfBoundsException e)
-//    {
-//      host = "localhost";
-//    }
-//    ClientCotroller chat= new ClientCotroller(host, DEFAULT_PORT);
-//    chat.accept();  //Wait for console data
-//  }
-//}
 //End of ConsoleChat class

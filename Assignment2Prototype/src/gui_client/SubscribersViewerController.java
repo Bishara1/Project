@@ -51,7 +51,7 @@ public class SubscribersViewerController {
 	
 	@FXML
 	private TextField SubscriberIDtxt;
-	
+
 	@FXML
 	private Button btnclose=null;
 	@FXML
@@ -67,6 +67,8 @@ public class SubscribersViewerController {
 		//scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());  //css
 		primaryStage.setTitle("Client");
 		primaryStage.setScene(scene);
+		ImportDataBtn();
+		LoadTable();
 		
 		primaryStage.show();	
 	}
@@ -77,8 +79,8 @@ public class SubscribersViewerController {
 	
 	public void ImportDataBtn() {
 		ClientUI.chat.accept("Read");
+		System.out.println("I am here");
 		obs = FXCollections.observableArrayList(ChatClient.subscribers);
-		LoadTable();
 	}
 	
 	public void ExitBtn() {
@@ -87,6 +89,8 @@ public class SubscribersViewerController {
 	}
 	
 	public void LoadTable() {
-		tableSub.setItems(obs);
+        //sfnamecol.setCellValueFactory(c -> c.getValue().getFname().toString());
+        
+        //tableSub.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
 	}
 }

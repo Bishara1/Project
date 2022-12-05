@@ -20,9 +20,6 @@ import javafx.stage.Stage;
 public class LoginController {
 	ChatClient client;
 	
-	//save changes by tali
-	//you can see this change??????
-	
 	public void start(Stage primaryStage) throws Exception {	
 		Parent root = FXMLLoader.load(getClass().getResource("/gui_client/Login.fxml"));
 				
