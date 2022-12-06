@@ -76,10 +76,7 @@ public class SubscribersViewerController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
 		ClientUI.chat.accept("login"); // send to server that a client is connected
-		ClientUI.chat.accept("Read");  // read from database
-		obs = FXCollections.observableArrayList(ChatClient.subscribers);
-		LoadTable();
-		tableSub.setItems(obs);
+		RefreshTable();
 	}
 	
 	public void UpdatBtn() {
@@ -87,15 +84,10 @@ public class SubscribersViewerController implements Initializable{
 		System.out.println("Updating");
 		ClientUI.chat.accept(command);
 		ClientUI.chat.display("Updated");
-	}
-
-	
-	public void ExitBtn() {
-		System.out.println("exiting login screen");
-		System.exit(0);	
+		RefreshTable();	
 	}
 	
-	public void LoadTable() {
+	public void LoadAndSetTable() {
 		fnamecol.setCellValueFactory(new PropertyValueFactory<>("Fname"));
 		lnamecol.setCellValueFactory(new PropertyValueFactory<>("LName"));
 		idcol.setCellValueFactory(new PropertyValueFactory<>("Id"));
@@ -103,5 +95,19 @@ public class SubscribersViewerController implements Initializable{
 		emailcol.setCellValueFactory(new PropertyValueFactory<>("Email"));
 		visacol.setCellValueFactory(new PropertyValueFactory<>("Visa"));
 		subnumcol.setCellValueFactory(new PropertyValueFactory<>("SubNum"));
+		
+		tableSub.setItems(obs);
+	}
+	
+	public void RefreshTable() {
+		ClientUI.chat.accept("Read");  // read from database
+		obs = FXCollections.observableArrayList(ChatClient.subscribers);  // insert database details to obs
+		LoadAndSetTable(); // load database colummns into table and display them
+	}
+	
+	public void ExitBtn() {
+		ClientUI.chat.accept("Disconnect");
+		System.out.println("exiting login screen");
+		System.exit(0);	
 	}
 }

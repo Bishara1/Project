@@ -36,7 +36,7 @@ public class Connected {
 	}
 
 	public void setStatus(String status) {
-		Status = Status;
+		Status = status;
 	}
 
 	

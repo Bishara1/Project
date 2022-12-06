@@ -59,9 +59,7 @@ public class ServerInfoController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		serverIptxt.setText(EchoServer.getLocalIp());  // Set current ip
-		colIp.setCellValueFactory(new PropertyValueFactory<>("Ip"));
-		colHost.setCellValueFactory(new PropertyValueFactory<>("Host"));
-		colStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+		LoadTable();
 	}
 	
 	public void RunServerBtn() {
@@ -76,7 +74,14 @@ public class ServerInfoController implements Initializable{
 	
 	public void RefreshClientsBtn() {
 		data = FXCollections.observableArrayList(EchoServer.users);
+		LoadTable();
 		table.setItems(data);
+	}
+	
+	public void LoadTable() {
+		colIp.setCellValueFactory(new PropertyValueFactory<>("Ip"));
+		colHost.setCellValueFactory(new PropertyValueFactory<>("Host"));
+		colStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
 	}
 	
 	public void QuitBtn() {

@@ -64,15 +64,20 @@ public class ChatClient extends AbstractClient
    */
   @SuppressWarnings("unchecked")
   public void handleMessageFromServer(Object msg) 
-  {
-	  awaitResponse = false;
-	  
+  {	  
 	  ArrayList<Subscriber> message = (ArrayList<Subscriber>)msg;
+	  String result = message.get(0).getFname();
 
-	  if (message.get(0).getFname().equals("Database")) {
+	  if (result.equals("Database")) {
 		  message.remove(0);
 		  subscribers = message;
 	  } 
+	  
+	  else if (result.equals("Disconnected")) {
+		  ClientUI.chat.display("Disconnected");
+	  }
+	  
+	  awaitResponse = false;
   }
 
   /**
@@ -87,6 +92,7 @@ public class ChatClient extends AbstractClient
     	String msg = (String)message;
     	if(msg.equals("login")) 
     		msg += " " + this.getHost();
+    	
     	openConnection(); //in order to send more than one message
        	awaitResponse = true;
     	sendToServer(msg);

@@ -230,31 +230,56 @@ public class EchoServer extends AbstractServer
   
   public void ParseClientData(String data, ConnectionToClient client) throws IOException {
 	  String[] parsedData = data.split(" ");
-	  ArrayList<Subscriber> db = new ArrayList<>();
-	  db.add(new Subscriber("Database", null, null, null, null, null, null));
+	  ArrayList<Subscriber> response = new ArrayList<>();
 	  //enum check possibility
 	  try {
-		  if (parsedData[0].equals("Update"))
+		  if (parsedData[0].equals("Update")) {
 			  UpdateToDB(parsedData);
+			  response.add(new Subscriber("Update", null, null, null, null, null, null));
+			  client.sendToClient(response);
+		  }
 		  
 		  else if (parsedData[0].equals("Read"))
 		  {
-			  db.addAll(ReadFromDB());
-			  client.sendToClient(db);
+			  response.add(new Subscriber("Database", null, null, null, null, null, null));
+			  response.addAll(ReadFromDB());
+			  client.sendToClient(response);
 		  }
 		  
 		  else if (parsedData[0].equals("login"))
 		  {
-//			 System.out.println("Login"); 
-			 users.add(new Connected(client.getInetAddress().getCanonicalHostName().toString(), parsedData[1], "Connected"));
+			 boolean found = false;
 			 ArrayList<Subscriber> temp = new ArrayList<Subscriber>();
+			 
+			 for (Connected Client : users) {
+					if (Client.getIp().equals(client.getInetAddress().getCanonicalHostName().toString())) {
+						users.get(users.indexOf(Client)).setStatus("Connected");
+						found = true;
+						break;
+					}
+			 }
+			 if (!found)
+				 users.add(new Connected(client.getInetAddress().getCanonicalHostName().toString(), parsedData[1], "Connected"));
+			 
+			 System.out.println(users);  //comment this line
 			 temp.add(new Subscriber("login", null, null, null, null, null, null));
 			 client.sendToClient(temp);
 		  }
 		  
+		  else if (parsedData[0].equals("Disconnect")) {
+			  for (Connected Client : users) {
+				if (Client.getIp().equals(client.getInetAddress().getCanonicalHostName().toString())) {
+					users.get(users.indexOf(Client)).setStatus("Disconnected");
+					break;
+				}
+			  }
+			  
+			  response.add(new Subscriber("Disconnected", null, null, null, null, null, null));
+			  System.out.println(users);  //comment this line
+			  client.sendToClient(response);
+		  }
+		  
 	  } catch(SQLException e) {e.printStackTrace();}
   }
-  
-  
 }
 //End of EchoServer class
