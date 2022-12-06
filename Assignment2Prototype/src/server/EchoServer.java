@@ -69,7 +69,8 @@ public class EchoServer extends AbstractServer
 	  
 		System.out.println("Message received: " + msg + " from " + client);
 		try {
-			ParseClientData(data, client);
+			String[] temp = client.toString().split(" ");
+			ParseClientData(data, client,temp[1]);
 			//client.sendToClient(data); // added maybe uncomment?
 		} 
 		//catch (SQLException e) {e.printStackTrace();} 
@@ -230,7 +231,7 @@ public class EchoServer extends AbstractServer
 	}
   
   
-  public void ParseClientData(String data, ConnectionToClient client) throws IOException {
+  public void ParseClientData(String data, ConnectionToClient client,String ip) throws IOException {
 	  String[] parsedData = data.split(" ");
 	  ArrayList<Subscriber> response = new ArrayList<>();
 	  //enum check possibility
@@ -254,23 +255,22 @@ public class EchoServer extends AbstractServer
 			 ArrayList<Subscriber> temp = new ArrayList<Subscriber>();
 			 
 			 for (Connected Client : users) {
-					if (Client.getIp().equals(client.getInetAddress().getCanonicalHostName().toString())) {
+					if (Client.getIp().equals(ip)) {
 						users.get(users.indexOf(Client)).setStatus("Connected");
 						found = true;
 						break;
 					}
 			 }
 			 if (!found)
-				 users.add(new Connected(client.getInetAddress().getCanonicalHostName().toString(), parsedData[1], "Connected"));
+				 users.add(new Connected(ip, parsedData[1], "Connected"));
 			 
-			 System.out.println(users);  //comment this line
 			 temp.add(new Subscriber("login", null, null, null, null, null, null));
 			 client.sendToClient(temp);
 		  }
 		  
 		  else if (parsedData[0].equals("Disconnect")) {
 			  for (Connected Client : users) {
-				if (Client.getIp().equals(client.getInetAddress().getCanonicalHostName().toString())) {
+				if (Client.getIp().equals(ip)) {
 					users.get(users.indexOf(Client)).setStatus("Disconnected");
 					break;
 				}

@@ -1,6 +1,7 @@
 package gui_server;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.naming.spi.InitialContextFactory;
@@ -76,8 +77,9 @@ public class ServerInfoController implements Initializable {
 	}
 	
 	public void RefreshClientsBtn() {
-		data = FXCollections.observableArrayList(EchoServer.users);
+		table.getItems().clear();
 		LoadTable();
+		data = FXCollections.observableArrayList(EchoServer.users);
 		table.setItems(data);
 	}
 	

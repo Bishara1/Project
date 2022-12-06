@@ -6,7 +6,7 @@ public class Connected {
 	private String Host;
 	private String Status;
 	
-	public Connected(String ip, String Host,String Status)
+	public Connected(String ip, String Host, String Status)
 	{
 		this.ip = ip;
 		this.Host = Host;
