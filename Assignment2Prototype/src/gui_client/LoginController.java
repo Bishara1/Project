@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class LoginController {
-	public static ClientController chat; //only one instance
+//	public static ClientController chat; //only one instance
 	ChatClient client;
 
 	public void start(Stage primaryStage) throws Exception {
@@ -41,7 +41,6 @@ public class LoginController {
 		//scene.getStylesheets().add(getClass().getResource("/gui/.css").toExternalForm());
 		primaryStage.setTitle("Subscribers Viewer");
 		primaryStage.setScene(scene);
-		chat = new ClientController("localhost", 5555);  // new client connected
 		
 		primaryStage.show();	
 	}

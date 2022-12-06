@@ -4,6 +4,8 @@ package server;
 // license found at www.lloseng.com 
 
 import java.io.*;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -75,6 +77,15 @@ public class EchoServer extends AbstractServer
 			e.printStackTrace();
 		}
 			   
+  }
+  
+  public static String getLocalIp() {
+	  String ip = null;
+	  try {
+		  ip = Inet4Address.getLocalHost().getHostAddress();
+	  } catch (UnknownHostException e) { e.printStackTrace(); } 
+	  
+	  return ip;
   }
 
     
@@ -234,8 +245,8 @@ public class EchoServer extends AbstractServer
 		  
 		  else if (parsedData[0].equals("login"))
 		  {
-			 System.out.println("Login"); 
-			 users.add(new Connected(client.getName() ,parsedData[1], "Connected"));
+//			 System.out.println("Login"); 
+			 users.add(new Connected(client.getInetAddress().getCanonicalHostName().toString(), parsedData[1], "Connected"));
 			 ArrayList<Subscriber> temp = new ArrayList<Subscriber>();
 			 temp.add(new Subscriber("login", null, null, null, null, null, null));
 			 client.sendToClient(temp);

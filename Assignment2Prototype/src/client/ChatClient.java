@@ -111,10 +111,8 @@ public class ChatClient extends AbstractClient
   /**
    * This method terminates the client.
    */
-  public void quit()
-  {
-    try
-    {
+  public void quit() {
+    try {
     	closeConnection();
     }
     catch(IOException e) {}

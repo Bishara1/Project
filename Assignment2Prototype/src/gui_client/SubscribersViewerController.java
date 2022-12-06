@@ -11,6 +11,7 @@ import javax.naming.spi.InitialContextFactory;
 
 import server.EchoServer;
 import client.ChatClient;
+import client.ClientController;
 import client.ClientUI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -59,6 +60,7 @@ public class SubscribersViewerController implements Initializable{
 	private TextField SubscriberSubNumtxt;
 	
 	public void start(Stage primaryStage) throws Exception { 
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui_client/SubscribersViewer.fxml"));
 		Parent root = loader.load();	
 		Scene scene = new Scene(root);
@@ -72,6 +74,7 @@ public class SubscribersViewerController implements Initializable{
 	// Initialize table contents with database 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
 		ClientUI.chat.accept("login"); // send to server that a client is connected
 		ClientUI.chat.accept("Read");  // read from database
 		obs = FXCollections.observableArrayList(ChatClient.subscribers);

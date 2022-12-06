@@ -58,6 +58,7 @@ public class ServerInfoController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		serverIptxt.setText(EchoServer.getLocalIp());  // Set current ip
 		colIp.setCellValueFactory(new PropertyValueFactory<>("Ip"));
 		colHost.setCellValueFactory(new PropertyValueFactory<>("Host"));
 		colStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
