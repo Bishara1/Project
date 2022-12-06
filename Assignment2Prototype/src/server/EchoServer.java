@@ -33,6 +33,7 @@ public class EchoServer extends AbstractServer
 { 
 	Connection conn;
 	public static ArrayList<Connected> users = new ArrayList<Connected>();
+	private static String databasePassword = null;
   //Class variables *************************************************
   
   /**
@@ -120,6 +121,7 @@ public class EchoServer extends AbstractServer
   public static void runServer(String[] args) 
   {
     int port = 0; //Port to listen on
+    databasePassword = args[1];
 
     try
     {
@@ -154,7 +156,7 @@ public class EchoServer extends AbstractServer
       
       try 
       {
-          conn = DriverManager.getConnection("jdbc:mysql://localhost/prototype?serverTimezone=IST","root","Bv654gF11!");
+          conn = DriverManager.getConnection("jdbc:mysql://localhost/prototype?serverTimezone=IST", "root", databasePassword);
           System.out.println("SQL connection succeed");
    	  } catch (SQLException ex)  { /* handle any errors*/
 			System.out.println("SQLException: " + ex.getMessage());
@@ -275,7 +277,6 @@ public class EchoServer extends AbstractServer
 			  }
 			  
 			  response.add(new Subscriber("Disconnected", null, null, null, null, null, null));
-			  System.out.println(users);  //comment this line
 			  client.sendToClient(response);
 		  }
 		  

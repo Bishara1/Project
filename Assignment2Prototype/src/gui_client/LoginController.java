@@ -4,15 +4,20 @@ import client.ChatClient;
 import client.ClientController;
 import client.ClientUI;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
 //	public static ClientController chat; //only one instance
 	ChatClient client;
+	
+	@FXML
+	private TextField hostIptxt;
 
 	public void start(Stage primaryStage) throws Exception {
 		
@@ -32,6 +37,8 @@ public class LoginController {
 	}
 	
 	public void LoginBtn(ActionEvent event) throws Exception {
+		ConnectNewClient();
+
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
 		
@@ -43,5 +50,10 @@ public class LoginController {
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();	
+	}
+	
+	public void ConnectNewClient() {
+		ClientUI.chat = new ClientController(hostIptxt.getText(), 5555);  // new client connected
+		ClientUI.chat.accept("login"); // send to server that a client is connected
 	}
 }

@@ -23,12 +23,14 @@ import logic.Connected;
 import server.EchoServer;
 import server.ServerUI;
 
-public class ServerInfoController implements Initializable{
+public class ServerInfoController implements Initializable {
 	
 	@FXML
 	private TextField serverIptxt;
 	@FXML
 	private TextField serverPortxt;
+	@FXML
+	private TextField databasePasswordtxt;
 	
 	@FXML
 	private TableView<Connected> table;
@@ -68,7 +70,7 @@ public class ServerInfoController implements Initializable{
 			return;
 		}
 		
-		String[] args = {serverPortxt.getText()};
+		String[] args = {serverPortxt.getText(), databasePasswordtxt.getText()};
 		EchoServer.runServer(args);
 	}
 	

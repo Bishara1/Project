@@ -74,8 +74,6 @@ public class SubscribersViewerController implements Initializable{
 	// Initialize table contents with database 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ClientUI.chat = new ClientController("localhost", 5555);  // new client connected
-		ClientUI.chat.accept("login"); // send to server that a client is connected
 		RefreshTable();
 	}
 	
