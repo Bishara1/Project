@@ -14,6 +14,7 @@ public class Connected {
 	}
 	
 	
+	
 	public String getIp()
 	{
 		return this.ip;

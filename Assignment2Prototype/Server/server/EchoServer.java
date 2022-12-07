@@ -65,13 +65,12 @@ public class EchoServer extends AbstractServer
   
   public void handleMessageFromClient(Object msg, ConnectionToClient client)
   {
-	  String data = (String) msg;
+	  	String data = (String) msg;
 	  
 		System.out.println("Message received: " + msg + " from " + client);
 		try {
 			String[] temp = client.toString().split(" ");
-			ParseClientData(data, client,temp[1]);
-			//client.sendToClient(data); // added maybe uncomment?
+			ParseClientData(data, client, temp[1]);
 		} 
 		//catch (SQLException e) {e.printStackTrace();} 
 		catch (IOException e) {
@@ -231,10 +230,11 @@ public class EchoServer extends AbstractServer
 	}
   
   
-  public void ParseClientData(String data, ConnectionToClient client,String ip) throws IOException {
+  public void ParseClientData(String data, ConnectionToClient client, String ip) throws IOException {
 	  String[] parsedData = data.split(" ");
 	  ArrayList<Subscriber> response = new ArrayList<>();
 	  //enum check possibility
+	  
 	  try {
 		  if (parsedData[0].equals("Update")) {
 			  UpdateToDB(parsedData);
